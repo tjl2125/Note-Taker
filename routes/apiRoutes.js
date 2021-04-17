@@ -7,9 +7,8 @@ const { v4: uuidv4 } = require("uuid");
 
 module.exports = (app) => {
 
-// app.get('/api/notes', (req, res) => res.json(db));
+app.get('/api/notes', (req, res) => res.json(db));
 
-//Display
 app.get("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
       if (err) throw err;
@@ -18,7 +17,6 @@ app.get("/api/notes", (req, res) => {
   })
 });
 
-//New Note
 app.post("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
       if (err) throw err;
@@ -35,7 +33,6 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
-//Delete Saved Notes
 app.delete("/api/notes/:id", (req, res) => {
   const noteID = req.params.id;
     fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
