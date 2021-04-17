@@ -3,11 +3,11 @@ const app = express ();
 const fs = require ('fs');
 const path = require ('path'); 
 const db = require('../db/db.json');
-const uuid = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = (app) => {
 
-app.get('/api/notes', (req, res) => res.json(db));
+// app.get('/api/notes', (req, res) => res.json(db));
 
 //Display
 app.get("/api/notes", (req, res) => {
@@ -24,7 +24,7 @@ app.post("/api/notes", (req, res) => {
       if (err) throw err;
       const notes = JSON.parse(data);
       const newNote = req.body;
-      newNote.id = uuid.v4();
+      newNote.id = uuidv4();
       notes.push(newNote);
 
       const createNote = JSON.stringify(notes);
