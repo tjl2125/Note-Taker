@@ -7,8 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 
 module.exports = (app) => {
 
-app.get('/api/notes', (req, res) => res.json(db));
-
+//Sending GET Request
 app.get("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
       if (err) throw err;
@@ -17,6 +16,7 @@ app.get("/api/notes", (req, res) => {
   })
 });
 
+//Sending POST Request
 app.post("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
       if (err) throw err;
