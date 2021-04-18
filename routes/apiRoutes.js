@@ -33,6 +33,7 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
+//Deleting entries based on id provided by uuid
 app.delete("/api/notes/:id", (req, res) => {
   const noteID = req.params.id;
     fs.readFile(path.join(__dirname, "../db/db.json"), (err, data) => {
